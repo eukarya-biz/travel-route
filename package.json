@@ -1,0 +1,35 @@
+{
+  "name": "travel-route",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "An animated travel itinerary on a 3D globe, built with Navara (@navaramap/three).",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eukarya-biz/travel-route.git"
+  },
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "type-check": "tsc --noEmit",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "dependencies": {
+    "@navaramap/three": "0.0.4",
+    "@navaramap/three-default-descs": "0.0.4",
+    "@navaramap/three-default-plugin": "0.0.4",
+    "postprocessing": "6.39.3",
+    "three": "0.185.1"
+  },
+  "devDependencies": {
+    "@types/geojson": "7946.0.16",
+    "@types/node": "26.1.1",
+    "@types/three": "0.185.1",
+    "prettier": "3.9.5",
+    "typescript": "6.0.3",
+    "vite": "8.1.5"
+  }
+}
