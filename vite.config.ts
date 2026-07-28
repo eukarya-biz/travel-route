@@ -46,6 +46,10 @@ const copyNavaraRuntimeAssets = (): Plugin => ({
 });
 
 export default defineConfig({
+  // A GitHub Pages project site is served from `/<repo>/`, not the domain root,
+  // so the deploy workflow passes that prefix in. Local dev and any root-hosted
+  // deployment keep the default.
+  base: process.env.BASE_PATH ?? "/",
   plugins: [copyNavaraRuntimeAssets()],
   build: {
     // Emit chunks at the root of `dist` so the engine's runtime

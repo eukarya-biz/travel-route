@@ -1,5 +1,7 @@
 import type { AttributionChild } from "@navaramap/three";
 
+import { asset } from "./assets";
+
 /** A tile/asset data source used by the app, with its attribution fields. */
 export type Dataset = {
   url: string;
@@ -45,7 +47,7 @@ export const TERRAIN_DATASETS = {
  */
 export const GEOJSON_DATASETS = {
   worldCities: {
-    url: "/world-cities.geojson",
+    url: asset("/world-cities.geojson"),
     attribution: "World Major Cities",
   },
   /**
@@ -54,7 +56,7 @@ export const GEOJSON_DATASETS = {
    * dataset so a label layer does not have to download the polygons.
    */
   countryLabels: {
-    url: "/data/country-labels.geojson",
+    url: asset("/data/country-labels.geojson"),
     attribution: "Country boundaries: geo-countries (Open Data Commons PDDL)",
     attributionUrl: "https://github.com/datasets/geo-countries",
   },
@@ -65,27 +67,27 @@ export const GEOJSON_DATASETS = {
  */
 export const LOCAL_DATASETS = {
   soldierGLTF: {
-    url: "/glTF/Soldier/Soldier.glb",
+    url: asset("/glTF/Soldier/Soldier.glb"),
     attribution:
       "https://github.com/mrdoob/three.js/blob/dev/examples/models/gltf/Soldier.glb",
   },
   travelPlaneGLTF: {
-    url: "/glTF/travel/plane.glb",
+    url: asset("/glTF/travel/plane.glb"),
     attribution: "Airplane by Poly by Google - CC BY 3.0",
     attributionUrl: "https://poly.pizza/m/8ciDd9k8wha",
   },
   travelTrainGLTF: {
-    url: "/glTF/travel/train.glb",
+    url: asset("/glTF/travel/train.glb"),
     attribution: "Locomotive Front by Quaternius - CC0 1.0",
     attributionUrl: "https://poly.pizza/m/WY84FHug9s",
   },
   travelCarGLTF: {
-    url: "/glTF/travel/car.glb",
+    url: asset("/glTF/travel/car.glb"),
     attribution: "Car by Quaternius - CC0 1.0",
     attributionUrl: "https://poly.pizza/m/unqqkULtRU",
   },
   travelShipGLTF: {
-    url: "/glTF/travel/ship.glb",
+    url: asset("/glTF/travel/ship.glb"),
     attribution: "Ship by Quaternius - CC0 1.0",
     attributionUrl: "https://poly.pizza/m/mEQj2wZ3GC",
   },
