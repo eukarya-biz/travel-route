@@ -5,20 +5,25 @@ on:
     branches: [main]
   workflow_dispatch:
 
-# Allow the workflow to publish to Pages via the deployment API.
+# Pages serves a branch as-is ("Deploy from a branch"), so this workflow's job
+# is to write the build output to that branch. Publishing itself is GitHub's own
+# pages-build-deployment run, triggered by the push below.
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
-# One in-flight deployment at a time; a newer push waits rather than cancels,
-# so main and the live site never diverge.
+env:
+  # The branch Settings → Pages is pointed at. It holds build output only — the
+  # workflow overwrites whatever is on it.
+  PUBLISH_BRANCH: gh-pages-setup
+
+# One in-flight deploy at a time; a newer push waits rather than cancels, so
+# main and the published branch never diverge.
 concurrency:
   group: pages
   cancel-in-progress: false
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -35,22 +40,22 @@ jobs:
       - name: Build
         # The site lives at https://<owner>.github.io/<repo>/, so every asset
         # URL has to be prefixed with the repository name.
-        env:
-          BASE_PATH: /${{ github.event.repository.name }}/
-        run: pnpm build
+        run: BASE_PATH="/${GITHUB_REPOSITORY#*/}/" pnpm build
 
-      - uses: actions/configure-pages@v5
-
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Push build output to the publish branch
+        # The branch holds a single commit, replaced on every deploy: it is
+        # derived output, and a build is ~63 MB (the engine's scattering LUTs
+        # and WASM), so keeping its history would grow the repository fast.
+        working-directory: dist
+        run: |
+          # Without this, Pages hands the output to Jekyll, which skips files
+          # and directories whose names begin with `_`.
+          touch .nojekyll
+          git init -q -b "$PUBLISH_BRANCH"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -qm "Deploy ${GITHUB_SHA} to GitHub Pages"
+          git push -q --force \
+            "https://x-access-token:${{ github.token }}@github.com/${GITHUB_REPOSITORY}.git" \
+            "$PUBLISH_BRANCH"
