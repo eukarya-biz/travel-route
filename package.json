@@ -9,6 +9,7 @@
     "url": "git+https://github.com/eukarya-biz/travel-route.git"
   },
   "license": "MIT",
+  "packageManager": "pnpm@10.27.0",
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",

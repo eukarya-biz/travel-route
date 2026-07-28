@@ -3,6 +3,8 @@
  * cover them and how a country's ISO code becomes a flag emoji.
  */
 
+import { asset } from "./assets";
+
 /** Family name every label layer on this page references. */
 export const LABEL_FONT = "TravelLabels";
 
@@ -14,7 +16,7 @@ export const LABEL_FONT = "TravelLabels";
  * the subsets an on-screen label actually needs are downloaded.
  */
 export const LABEL_FONT_CSS_URLS = [
-  "/fonts/woff2/world-cities.css",
+  asset("/fonts/woff2/world-cities.css"),
   "https://cdn.jsdelivr.net/npm/@infolektuell/noto-color-emoji@0.2.0/index.css",
 ];
 

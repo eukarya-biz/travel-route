@@ -23,6 +23,7 @@ import {
 import type { FeatureCollection, Point } from "geojson";
 import { Matrix4, Vector3 } from "three";
 
+import { asset } from "./assets";
 import { GEOJSON_DATASETS, TERRAIN_DATASETS, TILE_DATASETS } from "./datasets";
 import {
   DEFAULT_MODES,
@@ -260,7 +261,7 @@ export const run = async (view: ThreeView<CustomDescriptions>) => {
     type: "vector",
     source: stopsSource,
     billboard: {
-      url: "/pin.png",
+      url: asset("/pin.png"),
       color: new Color().setStyle("#ffffff"),
       // Screen-space size, so the pins read from orbit and from the low chase
       // camera alike.
