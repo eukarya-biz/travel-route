@@ -14,8 +14,9 @@ permissions:
 env:
   # The branch Settings → Pages is pointed at. It holds build output only — the
   # workflow overwrites whatever is on it.
-  PUBLISH_BRANCH: pages-branch-deploy
 
+  PUBLISH_BRANCH: gh-pages-setup
+  
 # One in-flight deploy at a time; a newer push waits rather than cancels, so
 # main and the published branch never diverge.
 concurrency:
