@@ -1,5 +1,7 @@
 # Travel Route
 
+> Try it out: https://eukarya-biz.github.io/travel-route/
+
 A TravelBoast-style animated journey on a 3D globe: plan an itinerary, pick how
 you travel each leg, and watch a 3D vehicle draw the route as it goes.
 
