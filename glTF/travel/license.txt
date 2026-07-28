@@ -1,0 +1,26 @@
+Vehicle models used by this app.
+All four were downloaded from https://poly.pizza/.
+
+plane.glb
+* title:   Airplane
+* author:  Poly by Google
+* source:  https://poly.pizza/m/8ciDd9k8wha
+* license: CC-BY 3.0 (https://creativecommons.org/licenses/by/3.0/)
+
+train.glb
+* title:   Locomotive Front
+* author:  Quaternius (https://quaternius.com/)
+* source:  https://poly.pizza/m/WY84FHug9s
+* license: CC0 1.0 (https://creativecommons.org/publicdomain/zero/1.0/)
+
+car.glb
+* title:   Car
+* author:  Quaternius (https://quaternius.com/)
+* source:  https://poly.pizza/m/unqqkULtRU
+* license: CC0 1.0 (https://creativecommons.org/publicdomain/zero/1.0/)
+
+ship.glb
+* title:   Ship
+* author:  Quaternius (https://quaternius.com/)
+* source:  https://poly.pizza/m/mEQj2wZ3GC
+* license: CC0 1.0 (https://creativecommons.org/publicdomain/zero/1.0/)
