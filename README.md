@@ -61,25 +61,6 @@ the labels flicker; deleting the layer does not. The sources stay alive
 (they're reference counted, and a source only releases its data once no layer
 references it), so re-adding a layer restyles cached data instead of refetching.
 
-## Orientation math
-
-Mesh transforms are Cartesian (ECEF), so `position` alone leaves a model lying
-on its side. Each frame the vehicle's world matrix is composed as
-
-```
-frame · course · UPRIGHT · bank · pitch · noseYaw
-```
-
-read right to left, the order vertices travel through:
-
-- `noseYaw` (per vehicle) rotates the model about its own up axis until its nose
-  points along +Z, so everything downstream is model-agnostic;
-- `pitch` tips it along the flight-path angle of the arc (plus the idle bob);
-- `bank` rolls it into the turn;
-- `UPRIGHT` stands the Y-up model on the tangent frame;
-- `course` swings it onto the current heading;
-- `frame` is `eastNorthUpToFixedFrame` at the vehicle's position.
-
 ## Build setup notes
 
 The engine ships prebuilt worker chunks and WASM, and fetches some data at
